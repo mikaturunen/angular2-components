@@ -1,40 +1,43 @@
 {
-  "name": "angular2-components",
-  "version": "0.0.1",
-  "description": "Angular 2 beta component try outs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mikaturunen/angular2-components.git"
-  },
-  "keywords": [
-    "angular2",
-    "beta",
-    "components",
-    "controllers",
-    "directives"
-  ],
-  "author": "Mika Turunen <mika.turunen@ymail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mikaturunen/angular2-components/issues"
-  },
-  "homepage": "https://github.com/mikaturunen/angular2-components#readme",
-  "dependencies": {
-    "angular2": "^2.0.0-beta.0",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.34.1",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "^5.0.0-beta.0",
-    "systemjs": "^0.19.12",
-    "zone.js": "^0.5.10"
-  },
-  "devDependencies": {
-    "concurrently": "^1.0.0",
-    "lite-server": "^1.3.2",
-    "typescript": "^1.7.5"
-  }
+    "name": "angular2-components",
+    "version": "0.0.1",
+    "description": "Angular 2 beta component try outs",
+    "main": "index.js",
+    "scripts": {
+        "tsc": "tsc",
+        "tsc:w": "tsc -w",
+        "lite": "lite-server",
+        "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mikaturunen/angular2-components.git"
+    },
+    "keywords": [
+        "angular2",
+        "beta",
+        "components",
+        "controllers",
+        "directives"
+    ],
+    "author": "Mika Turunen <mika.turunen@ymail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mikaturunen/angular2-components/issues"
+    },
+    "homepage": "https://github.com/mikaturunen/angular2-components#readme",
+    "dependencies": {
+        "angular2": "^2.0.0-beta.0",
+        "es6-promise": "^3.0.2",
+        "es6-shim": "^0.34.1",
+        "reflect-metadata": "^0.1.3",
+        "rxjs": "^5.0.0-beta.0",
+        "systemjs": "^0.19.12",
+        "zone.js": "^0.5.10"
+    },
+    "devDependencies": {
+        "concurrently": "^1.0.0",
+        "lite-server": "^1.3.2",
+        "typescript": "^1.7.5"
+    }
 }
