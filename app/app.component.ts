@@ -3,7 +3,10 @@
 "use strict";
 
 import { Component } from "angular2/core";
+import { OnInit } from "angular2/core";
+
 import { HeroDetailComponent } from "./hero-detail.component";
+import { HeroService } from "./hero.service";
 
 @Component({
     selector: "my-app",
@@ -67,30 +70,28 @@ import { HeroDetailComponent } from "./hero-detail.component";
     `],
     directives: [
         HeroDetailComponent
+    ],
+    providers: [
+        HeroService
     ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     public title = "Tour of Heroes";
-    public hero: Hero = {
-        name: "windstorm",
-        id: 1
-    };
-    public heroes = HEROES;
+    public heroes: Hero[];
     public selectedHero: Hero;
+
+    constructor(private _heroService: HeroService) {
+    }
+
+    ngOnInit() {
+        this.getHeroes();
+    }
+
+    getHeroes() {
+        this._heroService.getHeroes().then(h => this.heroes = h);
+    }
+
     onSelect(hero: Hero) {
         this.selectedHero = hero;
     }
 }
-
-const HEROES: Hero[] = [
-    { id: 11, name: "Mr. T" },
-    { id: 12, name: "Dynamo" },
-    { id: 13, name: "Mysterio" },
-    { id: 14, name: "Kongo" },
-    { id: 15, name: "Green Smite" },
-    { id: 16, name: "Thor" },
-    { id: 19, name: "Executioner" },
-    { id: 21, name: "Donkey Kong" },
-    { id: 31, name: "Mr. FooBar" },
-    { id: 542, name: "DingDong.." }
-];
