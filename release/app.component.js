@@ -10,7 +10,7 @@ System.register(["angular2/core"], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var AppComponent, HEROES;
     return {
         setters:[
             function (core_1_1) {
@@ -24,17 +24,34 @@ System.register(["angular2/core"], function(exports_1) {
                         name: "windstorm",
                         id: 1
                     };
+                    this.heroes = HEROES;
                 }
+                AppComponent.prototype.onSelect = function (hero) {
+                    this.selectedHero = hero;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: "\n        <h1>{{title}}</h1>\n        <h2>{{hero.name}} details.</h2>\n        <div><label>id: </label>{{hero.id}}</div>\n        <div>\n            <label for=\"name\">name: </label>\n            <div><input name=\"name\" id=\"name\" [(ngModel)]=\"hero.name\" placeholder=\"name\" /></div>\n        </div>\n    "
+                        template: "\n        <h1>{{title}}</h1>\n        <h2>My Heroes</h2>\n        <ul class=\"heroes\">\n            <li *ngFor=\"#hero of heroes\" (click)=\"onSelect(hero)\" [class.selected]=\"hero === selectedHero\">\n                <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n            </li>\n        </ul>\n        <div *ngIf=\"selectedHero\">\n            <h2>{{selectedHero.name}} details!</h2>\n            <div>\n                <label>id: </label>{{selectedHero.id}}\n            </div>\n            <div>\n                <label>name: </label>\n                <input [(ngModel)]=\"selectedHero.name\" placeholder=\"name\"/>\n            </div>\n        </div>\n    ",
+                        styles: ["\n        .selected {\n            background-color: #CFD8DC !important;\n            color: white;\n        }\n        .heroes {\n            margin: 0 0 2em 0;\n            list-style-type: none;\n            padding: 0;\n            width: 10em;\n        }\n        .heroes li {\n            cursor: pointer;\n            position: relative;\n            left: 0;\n            background-color: #EEE;\n            margin: .5em;\n            padding: .3em 0em;\n            height: 1.6em;\n            border-radius: 4px;\n        }\n        .heroes li.selected:hover {\n            color: white;\n        }\n        .heroes li:hover {\n            color: #607D8B;\n            background-color: #EEE;\n            left: .1em;\n        }\n        .heroes .text {\n            position: relative;\n            top: -3px;\n        }\n        .heroes .badge {\n            display: inline-block;\n            font-size: small;\n            color: white;\n            padding: 0.8em 0.7em 0em 0.7em;\n            background-color: #607D8B;\n            line-height: 1em;\n            position: relative;\n            left: -1px;\n            top: -4px;\n            height: 1.8em;\n            margin-right: .8em;\n            border-radius: 4px 0px 0px 4px;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             })();
             exports_1("AppComponent", AppComponent);
+            HEROES = [
+                { id: 11, name: "Mr. T" },
+                { id: 12, name: "Dynamo" },
+                { id: 13, name: "Mysterio" },
+                { id: 14, name: "Kongo" },
+                { id: 15, name: "Green Smite" },
+                { id: 16, name: "Thor" },
+                { id: 19, name: "Executioner" },
+                { id: 21, name: "Donkey Kong" },
+                { id: 31, name: "Mr. FooBar" },
+                { id: 542, name: "DingDong.." }
+            ];
         }
     }
 });
