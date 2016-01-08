@@ -1,6 +1,9 @@
 /// <reference path="../definitions/hero.d.ts" />
 
+"use strict";
+
 import { Component } from "angular2/core";
+import { HeroDetailComponent } from "./hero-detail.component";
 
 @Component({
     selector: "my-app",
