@@ -29,7 +29,7 @@ System.register(["angular2/core"], function(exports_1) {
                     __metadata('design:paramtypes', [])
                 ], HeroDetailComponent);
                 return HeroDetailComponent;
-            }());
+            })();
             exports_1("HeroDetailComponent", HeroDetailComponent);
         }
     }
