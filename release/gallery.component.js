@@ -24,12 +24,12 @@ System.register(["angular2/core"], function(exports_1) {
                 GalleryComponent = __decorate([
                     core_1.Component({
                         selector: "gallery-component",
-                        templateUrl: "release/templates/gallery-component.html"
+                        templateUrl: "app/templates/gallery-component.html"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], GalleryComponent);
                 return GalleryComponent;
-            })();
+            }());
             exports_1("GalleryComponent", GalleryComponent);
         }
     }
