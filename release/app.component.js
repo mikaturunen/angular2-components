@@ -54,7 +54,7 @@ System.register(["angular2/core", "./hero-detail.component", "./hero.service"], 
                     __metadata('design:paramtypes', [hero_service_1.HeroService])
                 ], AppComponent);
                 return AppComponent;
-            }());
+            })();
             exports_1("AppComponent", AppComponent);
         }
     }
