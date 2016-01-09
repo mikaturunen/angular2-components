@@ -1,0 +1,60 @@
+
+html, body {
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+}
+
+
+
+.fixed-top-header {
+    width: 100%;
+    min-height: 15em;
+    background-color: #d81b60;
+    color: white;
+    padding: 2em;
+}
+
+.fixed-top-header h1 {
+    font-size: 4.5em;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.fixed-top-header h3 {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 1.5em;
+    margin-top: 0;
+}
+
+.link-button {
+    border-radius: 0.25em;
+    min-width: 10em;
+    font-weight: bold;
+    background-color: #d81b60;
+    color: white;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: solid 1px white;
+}
+
+.link-button:hover {
+    background-color: white;
+    color: #d81b60;
+}
+
+.content {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+
+.instructions {
+    padding-bottom: 2em;
+}
