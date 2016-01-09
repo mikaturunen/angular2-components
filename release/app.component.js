@@ -26,19 +26,19 @@ System.register(["angular2/core", "./hero-detail.component", "./hero.service"], 
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(_heroService) {
+                    var _this = this;
                     this._heroService = _heroService;
                     this.title = "Tour of Heroes";
+                    this.ngOnInit = function () {
+                        return _this.getHeroes();
+                    };
+                    this.getHeroes = function () {
+                        return _this._heroService.getHeroes().then(function (h) { return _this.heroes = h; });
+                    };
+                    this.onSelect = function (hero) {
+                        return _this.selectedHero = hero;
+                    };
                 }
-                AppComponent.prototype.ngOnInit = function () {
-                    this.getHeroes();
-                };
-                AppComponent.prototype.getHeroes = function () {
-                    var _this = this;
-                    this._heroService.getHeroes().then(function (h) { return _this.heroes = h; });
-                };
-                AppComponent.prototype.onSelect = function (hero) {
-                    this.selectedHero = hero;
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
@@ -54,7 +54,7 @@ System.register(["angular2/core", "./hero-detail.component", "./hero.service"], 
                     __metadata('design:paramtypes', [hero_service_1.HeroService])
                 ], AppComponent);
                 return AppComponent;
-            })();
+            }());
             exports_1("AppComponent", AppComponent);
         }
     }
