@@ -8,7 +8,6 @@ html, body {
 }
 
 
-
 .fixed-top-header {
     width: 100%;
     min-height: 15em;
@@ -42,12 +41,35 @@ html, body {
     padding-top: 1em;
     padding-bottom: 1em;
     border: solid 1px white;
+    outline: none;
 }
-
 .link-button:hover {
     background-color: white;
     color: #d81b60;
 }
+
+.link-button a {
+    background-color: inherit;
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    underline: none;
+}
+.link-button a:hover {
+    background-color: inherit;
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    underline: none;
+}
+.link-button a:visited {
+    background-color: inherit;
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    underline: none;
+}
+
 
 .content {
     padding-left: 1em;
