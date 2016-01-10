@@ -10,7 +10,7 @@ import { Component } from "angular2/core";
         <div *ngIf="hero">
             <h2>{{hero.name}} details! </h2>
             <div>
-                <label>id: </label>{{hero.id}}
+                <label>id: </label> {{hero.id}}
             </div>
             <div>
                 <label>name: </label>

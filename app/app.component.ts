@@ -5,11 +5,11 @@
 import { Component } from "angular2/core";
 import { OnInit } from "angular2/core";
 
-import { HeroDetailComponent } from "./hero-detail.component"; 
+import { HeroDetailComponent } from "./hero-detail.component";
 import { HeroService } from "./hero.service";
 
 @Component({
-    selector: "my-app",
+    selector: "my-app" ,
     template: `
         <h1>{{title}}</h1>
         <h2>My Heroes</h2>

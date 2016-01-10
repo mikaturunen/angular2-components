@@ -9,6 +9,4 @@ import { Component } from "angular2/core";
     templateUrl: "app/component-gallery.template.html"
 })
 export class ComponentGallery {
-
 }
- 
