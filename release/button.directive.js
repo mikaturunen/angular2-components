@@ -10,36 +10,28 @@ System.register(["angular2/core"], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var Button;
+    var ButtonDirective;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            Button = (function () {
-                function Button() {
+            ButtonDirective = (function () {
+                function ButtonDirective(element, renderer) {
+                    this.element = element;
+                    this.renderer = renderer;
+                    this.renderer.setElementClass(this.element.nativeElement, "primary-button", true);
                 }
-                Button.prototype.test = function () {
-                    this.onCLick();
-                };
-                __decorate([
-                    core_1.Input("on-click"), 
-                    __metadata('design:type', Function)
-                ], Button.prototype, "onCLick", void 0);
-                Button = __decorate([
-                    core_1.Component({
-                        selector: "slim-button",
-                        templateUrl: "app/button.template.html",
-                        styles: [
-                            "button {\n            min-width: 10em;\n        }"
-                        ]
+                ButtonDirective = __decorate([
+                    core_1.Directive({
+                        selector: "[primaryButton]"
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], Button);
-                return Button;
+                    __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
+                ], ButtonDirective);
+                return ButtonDirective;
             }());
-            exports_1("Button", Button);
+            exports_1("ButtonDirective", ButtonDirective);
         }
     }
 });

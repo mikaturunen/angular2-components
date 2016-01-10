@@ -1,0 +1,10 @@
+
+button[primaryButton] {
+    min-width: 10em;
+    background-color: yellow;
+}
+
+button[secondaryButton] {
+    min-width: 10em;
+    background-color: red;
+}
