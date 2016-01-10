@@ -8,7 +8,7 @@ import { Component } from "angular2/core";
     selector: "my-hero-detail",
     template: `
         <div *ngIf="hero">
-            <h2>{{hero.name}} details!</h2>
+            <h2>{{hero.name}} details! </h2>
             <div>
                 <label>id: </label>{{hero.id}}
             </div>

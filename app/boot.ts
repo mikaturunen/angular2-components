@@ -1,4 +1,4 @@
 import { bootstrap }    from "angular2/platform/browser";
-import { GalleryComponent } from "./gallery.component";
+import { ComponentGallery } from "./component-gallery.component";
 
-bootstrap(GalleryComponent);
+bootstrap(ComponentGallery);

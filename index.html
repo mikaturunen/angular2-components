@@ -3,16 +3,21 @@
     <head>
         <title>Angular 2 Component Gallery</title>
 
-        <link rel="stylesheet" type="text/css" href="app/styles/gh-pages.css"></link>
+        <!-- These are specific for the gh-pages to display the gallery properly and has nothing to do with
+             the specific components. -->
+        <link rel="stylesheet" type="text/css" href="gh-pages-specific/gh-pages.css"></link>
+        <link rel="stylesheet" type="text/css" href="gh-pages-specific/highlight.pack.css"></link>
 
         <!-- 1. Load libraries -->
         <script src="angular2/bundles/angular2-polyfills.js"></script>
         <script src="systemjs/dist/system.src.js"></script>
         <script src="rxjs/bundles/Rx.js"></script>
         <script src="angular2/bundles/angular2.dev.js"></script>
+        <script src="gh-pages-specific/highlight.pack.js"></script>
 
         <!-- 2. Configure SystemJS -->
         <script>
+            // Configure and init System.JS
             System.config({
                 defaultJSExtensions: true,
                 packages: {
@@ -26,6 +31,8 @@
             System
                 .import("release/boot")
                 .then(null, console.error.bind(console));
+            // Initialize highlight.js
+            hljs.initHighlightOnLoad();
         </script>
 
     </head>
@@ -56,10 +63,10 @@
             <h2>FAQ</h2>
         </div>
         <div class="content">
-            <gallery-component>
+            <component-gallery>
             Loading...
             <!-- Use spinner instead. -->
-            </gallery-component>
+            </component-gallery>
         </div>
     </body>
 </html>
