@@ -1,5 +1,5 @@
 ///
-System.register(["angular2/core", "./button.directive"], function(exports_1) {
+System.register(["angular2/core", "./button.directive", "./tree-picker.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["angular2/core", "./button.directive"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, button_directive_1;
+    var core_1, button_directive_1, tree_picker_component_1;
     var ComponentGallery;
     return {
         setters:[
@@ -19,10 +19,26 @@ System.register(["angular2/core", "./button.directive"], function(exports_1) {
             },
             function (button_directive_1_1) {
                 button_directive_1 = button_directive_1_1;
+            },
+            function (tree_picker_component_1_1) {
+                tree_picker_component_1 = tree_picker_component_1_1;
             }],
         execute: function() {
             ComponentGallery = (function () {
                 function ComponentGallery() {
+                    this.test = {
+                        "sales (10000)": {
+                            "cars (10001)": {
+                                "audi (10002)": 1,
+                                "skoda (10003)": 2
+                            },
+                            "foobar (10010)": 3,
+                            "fooBar (10010)": 4
+                        },
+                        "converter (100)": {
+                            "conversion (101)": 100
+                        }
+                    };
                 }
                 ComponentGallery.prototype.openAlert = function (message) {
                     alert(message);
@@ -32,7 +48,8 @@ System.register(["angular2/core", "./button.directive"], function(exports_1) {
                         selector: "component-gallery",
                         templateUrl: "app/component-gallery.template.html",
                         directives: [
-                            button_directive_1.ButtonDirective
+                            button_directive_1.ButtonDirective,
+                            tree_picker_component_1.TreePickerComponent
                         ]
                     }), 
                     __metadata('design:paramtypes', [])
