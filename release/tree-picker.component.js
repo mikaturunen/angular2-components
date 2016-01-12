@@ -21,20 +21,24 @@ System.register(["angular2/core"], function(exports_1) {
                 function TreePickerComponent() {
                 }
                 TreePickerComponent.prototype.test = function () {
-                    this.buildTree(this.json, []);
+                    this.buildTree(this.json);
                 };
-                TreePickerComponent.prototype.buildTree = function (json, structure, key) {
+                TreePickerComponent.prototype.buildTree = function (json, structure, key, recursion) {
                     var _this = this;
+                    if (structure === void 0) { structure = []; }
                     if (key === void 0) { key = ""; }
+                    if (recursion === void 0) { recursion = 0; }
                     var keys = Object.keys(json);
                     if (keys.length > 0) {
-                        // We need to create UL elements from this branch spot
-                        keys.forEach(function (k) { return _this.buildTree(json[k], k); });
+                        // we have children, create UL
+                        var tabs = new Array(recursion).join(" ");
+                        console.log(tabs, "UL:", key);
+                        keys.forEach(function (key) { return _this.buildTree(json[key], structure, key, (recursion + 4)); });
+                        console.log(tabs, "/UL:", key);
                     }
                     else {
+                        console.log(new Array(recursion).join(" "), "li [", key, "]:", json);
                     }
-                    var leafs = [];
-                    console.log(key, keys, json);
                 };
                 TreePickerComponent = __decorate([
                     core_1.Component({

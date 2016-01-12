@@ -21,25 +21,19 @@ export class TreePickerComponent {
     public json: Object;
 
     public test() {
-        this.buildTree(this.json, []);
+        this.buildTree(this.json);
     }
 
-    private buildTree(json: Object, structure: Object, key: string = "") {
+    private buildTree(json: Object, structure: Object[][] = [], key: string = "", recursion: number = 0) {
         const keys = Object.keys(json);
-
         if (keys.length > 0) {
-            // We need to create UL elements from this branch spot
-
-
-            keys.forEach(k => this.buildTree(json[k], k));
+            // we have children, create UL
+            const tabs = new Array(recursion).join(" ");
+            console.log(tabs, "UL:", key);
+            keys.forEach(key => this.buildTree(json[key], structure, key, (recursion + 4)));
+            console.log(tabs, "/UL:", key);
         } else {
-            // We are in the specific leaf, with values in our hand and key containing the property name
-
+            console.log(new Array(recursion).join(" "), "li [", key,"]:", json);
         }
-
-        const leafs = [];
-
-        console.log(key, keys, json);
-
     }
 }

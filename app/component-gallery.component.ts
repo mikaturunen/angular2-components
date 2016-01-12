@@ -25,13 +25,17 @@ export class ComponentGallery {
         "sales (10000)": {
             "cars (10001)": {
                 "audi (10002)": 1,
-                "skoda (10003)": 2
+                "skoda (10100)": {
+                    "type 1 (10101)": 321,
+                    "type 2 (10102)": 231
+                }
             },
             "foobar (10010)": 3,
             "fooBar (10011)": 4
         },
         "converter (100)": {
             "conversion (101)": 100
-        }
+        },
+        "pipe (1)": 10
     };
 }
