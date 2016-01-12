@@ -21,12 +21,25 @@ System.register(["angular2/core"], function(exports_1) {
                 function TreePickerComponent() {
                 }
                 TreePickerComponent.prototype.test = function () {
-                    console.log(this.json);
+                    this.buildTree(this.json, []);
+                };
+                TreePickerComponent.prototype.buildTree = function (json, structure, key) {
+                    var _this = this;
+                    if (key === void 0) { key = ""; }
+                    var keys = Object.keys(json);
+                    if (keys.length > 0) {
+                        // We need to create UL elements from this branch spot
+                        keys.forEach(function (k) { return _this.buildTree(json[k], k); });
+                    }
+                    else {
+                    }
+                    var leafs = [];
+                    console.log(key, keys, json);
                 };
                 TreePickerComponent = __decorate([
                     core_1.Component({
                         selector: "tree-picker",
-                        template: "\n        <div *ngIf=\"json\">\n            <span (click)=\"test()\">Tree:</span>\n        </div>\n    ",
+                        template: "\n        <div *ngIf=\"json\">\n            <span (click)=\"test()\">Tree:</span>\n            <div>\n\n            </div>\n        </div>\n    ",
                         inputs: ["json"]
                     }), 
                     __metadata('design:paramtypes', [])

@@ -28,7 +28,7 @@ export class ComponentGallery {
                 "skoda (10003)": 2
             },
             "foobar (10010)": 3,
-            "fooBar (10010)": 4
+            "fooBar (10011)": 4
         },
         "converter (100)": {
             "conversion (101)": 100
