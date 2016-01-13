@@ -30,16 +30,51 @@ export class TreePickerComponent implements OnChanges {
 
     ngOnChanges(changes: { [ propName: string ]: any }) {
         console.log("changed:", changes);
-        TreePickerComponent.buildTree(this.json);
+        TreePickerComponent.debugBuildTree(this.json);
+        /*
+
+            "sales (10000)": {
+                "cars (10001)": {
+                    "audi (10002)": 1,
+                    "skoda (10100)": {
+                        "type 1 (10101)": 321,
+                        "type 2 (10102)": 231
+                    }
+                },
+                "foobar (10010)": 3,
+                "fooBar (10011)": 4
+            },
+            "converter (100)": {
+                "conversion (101)": 100
+            },
+            "pipe (1)": 10
+
+        */
+
+        this.tree = [
+            new TreeNode([
+
+                ],
+                [ "sales (10000)" ]
+            ),
+            new TreeNode([
+
+                ],
+                [ "converter (100)" ]
+            ),
+            new TreeNode([], [ "pipe (1)" ])
+        ]
     }
 
-    public static buildTree(json: Object, key: string = "", recursion: number = 0) {
+    // public static buildTree(json: Object, tree:)
+
+    public static debugBuildTree(json: Object, key: string = "", recursion: number = 0) {
         const keys = Object.keys(json);
         if (keys.length > 0) {
             // we have children, create UL
             const tabs = new Array(recursion).join(" ");
             console.log(tabs, "UL:", key);
-            keys.forEach(key => TreePickerComponent.buildTree(json[key], key, (recursion + 4)));
+            keys.forEach(key => TreePickerComponent.debugBuildTree(json[key], key, (recursion + 4)));
             console.log(tabs, "/UL:", key);
         } else {
             console.log(new Array(recursion).join(" "), "li [", key, "]:", json);

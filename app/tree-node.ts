@@ -1,14 +1,12 @@
 "use strict";
 
 export class TreeNode {
-    name: string;
-
     /**
      * Is the leaf expanded.
      */
     isExpanded: boolean;
 
-    constructor(private leafs: TreeNode[], private values: string[]) {
+    constructor(public leafs: TreeNode[], public values: string[]) {
         this.isExpanded = false;
     }
 

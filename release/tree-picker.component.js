@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "./tree-node"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1;
+    var core_1, common_1, tree_node_1;
     var TreePickerComponent;
     return {
         setters:[
@@ -18,6 +18,9 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (tree_node_1_1) {
+                tree_node_1 = tree_node_1_1;
             }],
         execute: function() {
             TreePickerComponent = (function () {
@@ -29,9 +32,34 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
                 }
                 TreePickerComponent.prototype.ngOnChanges = function (changes) {
                     console.log("changed:", changes);
-                    TreePickerComponent.buildTree(this.json);
+                    TreePickerComponent.debugBuildTree(this.json);
+                    /*
+            
+                        "sales (10000)": {
+                            "cars (10001)": {
+                                "audi (10002)": 1,
+                                "skoda (10100)": {
+                                    "type 1 (10101)": 321,
+                                    "type 2 (10102)": 231
+                                }
+                            },
+                            "foobar (10010)": 3,
+                            "fooBar (10011)": 4
+                        },
+                        "converter (100)": {
+                            "conversion (101)": 100
+                        },
+                        "pipe (1)": 10
+            
+                    */
+                    this.tree = [
+                        new tree_node_1.TreeNode([], ["sales (10000)"]),
+                        new tree_node_1.TreeNode([], ["converter (100)"]),
+                        new tree_node_1.TreeNode([], ["pipe (1)"])
+                    ];
                 };
-                TreePickerComponent.buildTree = function (json, key, recursion) {
+                // public static buildTree(json: Object, tree:)
+                TreePickerComponent.debugBuildTree = function (json, key, recursion) {
                     if (key === void 0) { key = ""; }
                     if (recursion === void 0) { recursion = 0; }
                     var keys = Object.keys(json);
@@ -39,7 +67,7 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
                         // we have children, create UL
                         var tabs = new Array(recursion).join(" ");
                         console.log(tabs, "UL:", key);
-                        keys.forEach(function (key) { return TreePickerComponent.buildTree(json[key], key, (recursion + 4)); });
+                        keys.forEach(function (key) { return TreePickerComponent.debugBuildTree(json[key], key, (recursion + 4)); });
                         console.log(tabs, "/UL:", key);
                     }
                     else {
