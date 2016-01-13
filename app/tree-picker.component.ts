@@ -1,40 +1,45 @@
 "use strict";
 
-import { Component } from "angular2/core";
+import { Component, View, OnChanges } from "angular2/core";
+import { NgIf, NgFor } from "angular2/common";
+
+import { TreeNode } from "./tree-node";
 
 @Component({
     selector: "tree-picker",
-    template: `
-        <div *ngIf="json">
-            <span (click)="test()">Tree:</span>
-            <div>
-
-            </div>
-        </div>
-    `,
     inputs: [ "json" ]
 })
-export class TreePickerComponent {
+@View({
+    templateUrl: "app/tree-picker.html",
+    directives: [
+        NgFor,
+        TreePickerComponent,
+        NgIf
+    ]
+})
+export class TreePickerComponent implements OnChanges {
     /**
-     * Specific JSON object that is displayd as a "tree" to navigate through.
+     * The user specified JSON object that gets expanded into Tree with leafs.
      */
     public json: Object;
 
-    public test() {
-        this.buildTree(this.json);
+    /**
+     * Tree that is expanded into view and made selectable.
+     */
+    private tree: TreeNode[] = [];
+
+    ngOnChanges(changes: { [ propName: string ]: any }) {
+        console.log("changed:", changes);
+        TreePickerComponent.buildTree(this.json);
     }
 
-    public buildTreeLists() {
-
-    }
-
-    private buildTree(json: Object, structure: Object[][] = [], key: string = "", recursion: number = 0) {
+    public static buildTree(json: Object, key: string = "", recursion: number = 0) {
         const keys = Object.keys(json);
         if (keys.length > 0) {
             // we have children, create UL
             const tabs = new Array(recursion).join(" ");
             console.log(tabs, "UL:", key);
-            keys.forEach(key => this.buildTree(json[key], structure, key, (recursion + 4)));
+            keys.forEach(key => TreePickerComponent.buildTree(json[key], key, (recursion + 4)));
             console.log(tabs, "/UL:", key);
         } else {
             console.log(new Array(recursion).join(" "), "li [", key, "]:", json);

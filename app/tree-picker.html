@@ -1,0 +1,16 @@
+<!-- Recursive template for rendering trees -->
+
+<ul>
+    <li *ngFor="#leaf of tree">
+        <span></span>
+        <span></span>
+        <div *ngIf="leaf.isExpanded">
+            <ul>
+                <li *ngFor="#leafValue of leaf.values">
+                    {{leafValue}}
+                </li>
+            </ul>
+            <tree-picker [json]="leaf.leafs"></tree-picker>
+        </div>
+    </li>
+</ul>
