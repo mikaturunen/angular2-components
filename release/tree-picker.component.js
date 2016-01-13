@@ -23,6 +23,8 @@ System.register(["angular2/core"], function(exports_1) {
                 TreePickerComponent.prototype.test = function () {
                     this.buildTree(this.json);
                 };
+                TreePickerComponent.prototype.buildTreeLists = function () {
+                };
                 TreePickerComponent.prototype.buildTree = function (json, structure, key, recursion) {
                     var _this = this;
                     if (structure === void 0) { structure = []; }

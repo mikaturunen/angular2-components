@@ -24,6 +24,10 @@ export class TreePickerComponent {
         this.buildTree(this.json);
     }
 
+    public buildTreeLists() {
+
+    }
+
     private buildTree(json: Object, structure: Object[][] = [], key: string = "", recursion: number = 0) {
         const keys = Object.keys(json);
         if (keys.length > 0) {
@@ -33,7 +37,7 @@ export class TreePickerComponent {
             keys.forEach(key => this.buildTree(json[key], structure, key, (recursion + 4)));
             console.log(tabs, "/UL:", key);
         } else {
-            console.log(new Array(recursion).join(" "), "li [", key,"]:", json);
+            console.log(new Array(recursion).join(" "), "li [", key, "]:", json);
         }
     }
 }
