@@ -6,7 +6,7 @@ export class TreeNode {
      */
     isExpanded: boolean;
 
-    constructor(public leafs: TreeNode[], public values: string[]) {
+    constructor(public leafs: TreeNode[] = [], public values: string[] = []) {
         this.isExpanded = false;
     }
 

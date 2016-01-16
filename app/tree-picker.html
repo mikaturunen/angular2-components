@@ -5,12 +5,12 @@
         <span></span>
         <span></span>
         <div *ngIf="leaf.isExpanded">
+            <tree-picker [json]="leaf.leafs"></tree-picker>
             <ul>
                 <li *ngFor="#leafValue of leaf.values">
                     {{leafValue}}
                 </li>
             </ul>
-            <tree-picker [json]="leaf.leafs"></tree-picker>
         </div>
     </li>
 </ul>

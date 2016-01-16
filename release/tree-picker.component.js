@@ -31,34 +31,26 @@ System.register(["angular2/core", "angular2/common", "./tree-node"], function(ex
                     this.tree = [];
                 }
                 TreePickerComponent.prototype.ngOnChanges = function (changes) {
-                    console.log("changed:", changes);
                     TreePickerComponent.debugBuildTree(this.json);
-                    /*
-            
-                        "sales (10000)": {
-                            "cars (10001)": {
-                                "audi (10002)": 1,
-                                "skoda (10100)": {
-                                    "type 1 (10101)": 321,
-                                    "type 2 (10102)": 231
-                                }
-                            },
-                            "foobar (10010)": 3,
-                            "fooBar (10011)": 4
-                        },
-                        "converter (100)": {
-                            "conversion (101)": 100
-                        },
-                        "pipe (1)": 10
-            
-                    */
-                    this.tree = [
-                        new tree_node_1.TreeNode([], ["sales (10000)"]),
-                        new tree_node_1.TreeNode([], ["converter (100)"]),
-                        new tree_node_1.TreeNode([], ["pipe (1)"])
-                    ];
+                    this.tree = [new tree_node_1.TreeNode()];
+                    this.buildTree(this.json, this.tree[0].leafs, this.tree[0].values);
+                    console.log(this.tree);
                 };
-                // public static buildTree(json: Object, tree:)
+                TreePickerComponent.prototype.buildTree = function (json, leafs, values, key) {
+                    var _this = this;
+                    if (key === void 0) { key = ""; }
+                    var keys = Object.keys(json);
+                    if (keys.length > 0) {
+                        var newLeafs = [];
+                        var newValues = [];
+                        // Create a new leaf and include the potential
+                        leafs.push(new tree_node_1.TreeNode(newLeafs, newValues));
+                        keys.forEach(function (key) { return _this.buildTree(json[key], newLeafs, newValues, key); });
+                    }
+                    else {
+                        values.push(key);
+                    }
+                };
                 TreePickerComponent.debugBuildTree = function (json, key, recursion) {
                     if (key === void 0) { key = ""; }
                     if (recursion === void 0) { recursion = 0; }

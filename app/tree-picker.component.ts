@@ -29,44 +29,32 @@ export class TreePickerComponent implements OnChanges {
     private tree: TreeNode[] = [];
 
     ngOnChanges(changes: { [ propName: string ]: any }) {
-        console.log("changed:", changes);
         TreePickerComponent.debugBuildTree(this.json);
-        /*
+        this.tree = [ new TreeNode() ];
 
-            "sales (10000)": {
-                "cars (10001)": {
-                    "audi (10002)": 1,
-                    "skoda (10100)": {
-                        "type 1 (10101)": 321,
-                        "type 2 (10102)": 231
-                    }
-                },
-                "foobar (10010)": 3,
-                "fooBar (10011)": 4
-            },
-            "converter (100)": {
-                "conversion (101)": 100
-            },
-            "pipe (1)": 10
-
-        */
-
-        this.tree = [
-            new TreeNode([
-
-                ],
-                [ "sales (10000)" ]
-            ),
-            new TreeNode([
-
-                ],
-                [ "converter (100)" ]
-            ),
-            new TreeNode([], [ "pipe (1)" ])
-        ]
+        this.buildTree(this.json, this.tree[0].leafs, this.tree[0].values);
+        console.log(this.tree);
     }
 
-    // public static buildTree(json: Object, tree:)
+    public buildTree(
+            json: Object,
+            leafs: TreeNode[],
+            values: string[],
+            key: string = ""
+        ) {
+
+        const keys = Object.keys(json);
+
+        if (keys.length > 0) {
+            const newLeafs = [];
+            const newValues = [];
+            // Create a new leaf and include the potential
+            leafs.push(new TreeNode(newLeafs, newValues));
+            keys.forEach(key => this.buildTree(json[key], newLeafs, newValues, key));
+        } else {
+            values.push(key);
+        }
+    }
 
     public static debugBuildTree(json: Object, key: string = "", recursion: number = 0) {
         const keys = Object.keys(json);
