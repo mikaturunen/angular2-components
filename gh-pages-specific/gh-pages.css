@@ -70,7 +70,6 @@ html, body {
     underline: none;
 }
 
-
 .content {
     padding-left: 1em;
     padding-right: 1em;
@@ -79,5 +78,12 @@ html, body {
 }
 
 .instructions {
-    padding-bottom: 2em;
+    padding-bottom: 1em;
+}
+
+div[panel] {
+    background-color: #ededed;
+    padding: 0.5em;
+    margin: 0.25em;
+    border-radius: 0.25em;
 }

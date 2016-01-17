@@ -6,6 +6,7 @@ button[primaryButton] {
     color: white;
     border: solid 1px #e94b70;
     border-radius: 0.25em;
+    outline: none;
 }
 button[primaryButton]:hover {
     min-width: 10em;
@@ -14,6 +15,7 @@ button[primaryButton]:hover {
     background-color: white;
     border: solid 1px #e94b70;
     border-radius: 0.25em;
+    outline: none;
 }
 
 button[button] {
@@ -23,6 +25,7 @@ button[button] {
     color: #5a6a62;
     border: solid 1px #c7d5cc;
     border-radius: 0.25em;
+    outline: none;
 }
 button[button]:hover {
     min-width: 10em;
@@ -31,4 +34,13 @@ button[button]:hover {
     background-color: white;
     border: solid 1px #c7d5cc;
     border-radius: 0.25em;
+    outline: none;
+}
+
+.flexi-columns {
+    display: flex;
+}
+.flexi-columns > div {
+    width: 50%;
+    padding: 0.5em;
 }
