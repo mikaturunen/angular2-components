@@ -31,6 +31,10 @@ System.register(["angular2/core", "angular2/common", "./tree-node"], function(ex
                     this.tree = [];
                 }
                 TreePickerComponent.prototype.ngOnChanges = function (changes) {
+                    if (!changes["json"]) {
+                        console.log("Not json change: ", changes);
+                        return;
+                    }
                     TreePickerComponent.debugBuildTree(this.json);
                     this.tree = [new tree_node_1.TreeNode()];
                     this.buildTree(this.json, this.tree[0].leafs, this.tree[0].values);
@@ -69,7 +73,7 @@ System.register(["angular2/core", "angular2/common", "./tree-node"], function(ex
                 TreePickerComponent = __decorate([
                     core_1.Component({
                         selector: "tree-picker",
-                        inputs: ["json"]
+                        inputs: ["json", "tree"]
                     }),
                     core_1.View({
                         templateUrl: "app/tree-picker.html",

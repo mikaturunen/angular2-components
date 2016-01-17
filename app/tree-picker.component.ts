@@ -7,7 +7,7 @@ import { TreeNode } from "./tree-node";
 
 @Component({
     selector: "tree-picker",
-    inputs: [ "json" ]
+    inputs: [ "json", "tree" ]
 })
 @View({
     templateUrl: "app/tree-picker.html",
@@ -26,9 +26,14 @@ export class TreePickerComponent implements OnChanges {
     /**
      * Tree that is expanded into view and made selectable.
      */
-    private tree: TreeNode[] = [];
+    public tree: TreeNode[] = [];
 
     ngOnChanges(changes: { [ propName: string ]: any }) {
+        if (!changes["json"]) {
+            console.log("Not json change: ", changes);
+            return;
+        }
+
         TreePickerComponent.debugBuildTree(this.json);
         this.tree = [ new TreeNode() ];
 
