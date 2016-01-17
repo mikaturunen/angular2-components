@@ -34,8 +34,6 @@
             System
                 .import("release/boot")
                 .then(null, console.error.bind(console));
-            // Initialize highlight.js
-            hljs.initHighlightingOnLoad();
         </script>
 
     </head>
@@ -61,9 +59,21 @@
         <!-- Differet explanations on the content of the repository and on the usage of the page. -->
         <div class="content instructions">
             <h1>Getting Started</h1>
+
             <h2>Dependencies</h2>
+
             <h2>Installation</h2>
+
             <h2>FAQ</h2>
+            <h3>Is this a complete CSS library I could use for Angular 2?</h3>
+            I started working on this when Angular 2 went on beta for technical evaluation of Angular 2. It serves no real function other than showing one way of doing things during the beta and if you get some use of the components, please, do use them.
+
+            <h3>What components are supported and styled?</h3>
+            While I was working with Angular 2 I just thought of building a basic set of components I commonly see or personally use when building web applications. So you've got your buttons and such. Scroll down to see them.
+
+            <h3>How is the library tested?</h3>
+            Monkey testing (meaning manual testing that is) done mainly on Chrome as it's just one man effort to see what the technology does and not aiming to build a full library. The whole gallery just came about from that. There are some unit tests and specific tests for different components but the browser based support is not really validated to any degree.
+
         </div>
         <div class="content">
             <component-gallery>
