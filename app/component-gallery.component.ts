@@ -2,23 +2,27 @@
 
 "use strict";
 
-import { Component } from "angular2/core";
+import { Component, OnInit } from "angular2/core";
 
 // Start importing all the components we want to use and display in the gallery
-import { ButtonDirective } from "./button.directive";
 import { TreePickerComponent } from "./tree-picker.component";
+import { ButtonExamples } from "./button-examples.component";
 
 @Component({
     selector: "component-gallery",
     templateUrl: "app/component-gallery.template.html",
     directives: [
-        ButtonDirective,
-        TreePickerComponent
+        TreePickerComponent,
+        ButtonExamples
     ]
 })
-export class ComponentGallery {
+export class ComponentGallery implements OnInit {
     public openAlert(message: string) {
         alert(message);
+    }
+
+    public ngOnInit() {
+        (<any> window).hljs.initHighlighting();
     }
 
     public test: Object = {
